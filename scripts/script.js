@@ -69,8 +69,13 @@ var keystroke = function () {
   if (b < 0){b = 0;}
   if (b > 400){b = 400;}
   //if collision don't move that direction
-  if (x < a + size && Math.abs(y-b)<size){x = a + size;}
-  if( a < x + size  && b < y + size && x <= a + size && y <= b + size && x >= a ){
+  if (x < a + size && Math.abs(y-b)<size && x > a){x = a + size;}
+  if (a < x + size && Math.abs(y-b)<size && a > x){a = x + size;}
+  if (y < b + size && Math.abs(x-a)<size && y > b){y = b + size;}
+  if (b < y + size && Math.abs(x-a)<size && b > y){b = y + size;}
+
+  //collision!
+  if( a < x + size  && b < y + size && x <= a + size && y <= b + size ){
     console.log( 'collision!!!' );
   } else{
 
